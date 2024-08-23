@@ -1,8 +1,8 @@
 # vscode-sysmon
-[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/njzy.stats-bar)](https://marketplace.visualstudio.com/items?itemName=njzy.stats-bar)
-[![Visual Studio Marketplace Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/njzy.stats-bar)](https://marketplace.visualstudio.com/items?itemName=njzy.stats-bar)
-[![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/njzy.stats-bar)](https://marketplace.visualstudio.com/items?itemName=njzy.stats-bar)
-[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/njzy.stats-bar)](https://marketplace.visualstudio.com/items?itemName=njzy.stats-bar)
+[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
+[![Visual Studio Marketplace Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
+[![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
+[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
 
 Visual Studio Code extension to show system stats (Initial fork from [njzydark](https://github.com/njzydark/vscode-stats-bar))
 
