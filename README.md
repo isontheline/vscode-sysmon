@@ -4,7 +4,8 @@
 [![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
 [![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
 
-Visual Studio Code extension to show system stats (Initial fork from [njzydark](https://github.com/njzydark/vscode-stats-bar))
+Visual Studio Code Extension to show system stats inside the status bar
+(Forked from the awesome work of [njzydark](https://github.com/njzydark/vscode-stats-bar))
 
 ## Features
 - Support show cpu load, loadavg, network speed, memory usage and uptime
