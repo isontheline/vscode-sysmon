@@ -6,3 +6,4 @@ node_modules
 .pnpm-store
 package-lock.json
 pnpm-lock.yaml
+yarn.lock
