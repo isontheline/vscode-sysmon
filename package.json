@@ -2,7 +2,7 @@
   "name": "vscode-sysmon",
   "displayName": "VSCode SysMon",
   "description": "Visual Studio Code Extension to show system stats inside the status bar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "isontheline",
   "sponsor": {
     "url": "https://github.com/sponsors/isontheline"
