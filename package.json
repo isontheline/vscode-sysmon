@@ -1,0 +1,277 @@
+{
+  "name": "vscode-sysmon",
+  "displayName": "VSCode SysMon",
+  "description": "Visual Studio Code extension to show system stats",
+  "version": "1.0.0",
+  "publisher": "isontheline",
+  "engines": {
+    "vscode": "^1.92.2"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "system status",
+    "network speed",
+    "cpu load",
+    "memory usage",
+    "uptime",
+    "monitor"
+  ],
+  "icon": "images/icon.png",
+  "repository": "https://github.com/isontheline/vscode-sysmon.git",
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "configuration": [
+      {
+        "title": "SysMon",
+        "properties": {
+          "sysMon.enabled": {
+            "type": "boolean",
+            "scope": "machine-overridable",
+            "default": true,
+            "description": "Specifies whether to enable all modules"
+          },
+          "sysMon.location": {
+            "type": "string",
+            "scope": "machine-overridable",
+            "default": "Left",
+            "enum": [
+              "Left",
+              "Right"
+            ],
+            "enumDescriptions": [
+              "Left-aligned in the status bar",
+              "Right-aligned in the status bar"
+            ]
+          },
+          "sysMon.modules": {
+            "type": "array",
+            "scope": "machine-overridable",
+            "default": [
+              "cpuLoad",
+              "networkSpeed",
+              "memoUsage"
+            ],
+            "minItems": 0,
+            "maxItems": 5,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "cpuLoad",
+                "loadavg",
+                "networkSpeed",
+                "memoUsage",
+                "uptime"
+              ]
+            },
+            "markdownDescription": "Control the modules to be enabled and the display order (You can drag the item to control the order)"
+          },
+          "sysMon.refreshInterval": {
+            "type": "number",
+            "scope": "machine-overridable",
+            "default": 1800,
+            "description": "Specifies the refresh interval time (ms) to update all modules",
+            "minimum": 1000
+          },
+          "sysMon.priority": {
+            "type": "number",
+            "scope": "machine-overridable",
+            "default": -1,
+            "description": "The priority of the stats bar. Higher value means the stats bar should be shown more to the left"
+          },
+          "sysMon.cpuLoad.format": {
+            "type": "string",
+            "scope": "machine-overridable",
+            "default": "$(pulse) ${percent}%",
+            "markdownDescription": "You can use these variables to custom display format: `${percent}` or visit [doc](https://github.com/isontheline/vscode-sysmon#display-format) to see detail (e.g. how use icon)"
+          },
+          "sysMon.loadavg.format": {
+            "type": "string",
+            "scope": "machine-overridable",
+            "default": "${1}, ${5}, ${15}",
+            "markdownDescription": "You can use these variables to custom display format: `${1}` `${5}` `${15}` or visit [doc](https://github.com/isontheline/vscode-sysmon#display-format) to see detail (e.g. how use icon)"
+          },
+          "sysMon.networkSpeed.format": {
+            "type": "string",
+            "scope": "machine-overridable",
+            "default": "$(arrow-up) ${up} ${up-unit} $(arrow-down) ${down} ${down-unit}",
+            "markdownDescription": "You can use these variables to custom display format: `${up}` `${up-unit}` `${down}` `${down-unit}` or visit [doc](https://github.com/isontheline/vscode-sysmon#display-format) to see detail (e.g. how use icon)"
+          },
+          "sysMon.memoUsage.format": {
+            "type": "string",
+            "scope": "machine-overridable",
+            "default": "$(database) ${used}/${total} ${unit}, ${percent}%",
+            "markdownDescription": "You can use these variables to custom display format: `${used}` `${total}` `${unit}` `${percent}` `${pressurePercent}` or visit [doc](https://github.com/isontheline/vscode-sysmon#display-format) to see detail (e.g. how use icon)"
+          },
+          "sysMon.uptime.format": {
+            "type": "string",
+            "scope": "machine-overridable",
+            "default": "${days}d, ${hours}h, ${minutes}m",
+            "markdownDescription": "You can use these variables to custom display format: `${days}` `${hours}` `${minutes}` or visit [doc](https://github.com/isontheline/vscode-sysmon#display-format) to see detail (e.g. how use icon)"
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "SysMon.CopyIp",
+        "title": "SysMon: Copy IP"
+      },
+      {
+        "command": "SysMon.EnableAll",
+        "title": "SysMon: Enable All"
+      },
+      {
+        "command": "SysMon.DisableAll",
+        "title": "SysMon: Disable All"
+      },
+      {
+        "command": "SysMon.EnableCpuLoad",
+        "title": "SysMon: Enable Cpu Load"
+      },
+      {
+        "command": "SysMon.DisableCpuLoad",
+        "title": "SysMon: Disable Cpu Load"
+      },
+      {
+        "command": "SysMon.EnableNetworkSpeed",
+        "title": "SysMon: Enable Network Speed"
+      },
+      {
+        "command": "SysMon.DisableNetworkSpeed",
+        "title": "SysMon: Disable Network Speed"
+      },
+      {
+        "command": "SysMon.EnableLoadavg",
+        "title": "SysMon: Enable Loadavg"
+      },
+      {
+        "command": "SysMon.DisableLoadavg",
+        "title": "SysMon: Disable Loadavg"
+      },
+      {
+        "command": "SysMon.EnableMemoUsage",
+        "title": "SysMon: Enable Memory Usage"
+      },
+      {
+        "command": "SysMon.DisableMemoUsage",
+        "title": "SysMon: Disable Memory Usage"
+      },
+      {
+        "command": "SysMon.EnableUptime",
+        "title": "SysMon: Enable Uptime"
+      },
+      {
+        "command": "SysMon.DisableUptime",
+        "title": "SysMon: Disable Uptime"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "SysMon.EnableAll",
+          "when": "!config.sysMon.enabled"
+        },
+        {
+          "command": "SysMon.DisableAll",
+          "when": "config.sysMon.enabled"
+        },
+        {
+          "command": "SysMon.EnableCpuLoad",
+          "when": "!sysMon.cpuLoad"
+        },
+        {
+          "command": "SysMon.DisableCpuLoad",
+          "when": "sysMon.cpuLoad"
+        },
+        {
+          "command": "SysMon.EnableNetworkSpeed",
+          "when": "!sysMon.networkSpeed"
+        },
+        {
+          "command": "SysMon.DisableNetworkSpeed",
+          "when": "sysMon.networkSpeed"
+        },
+        {
+          "command": "SysMon.EnableLoadavg",
+          "when": "!sysMon.loadavg"
+        },
+        {
+          "command": "SysMon.DisableLoadavg",
+          "when": "sysMon.loadavg"
+        },
+        {
+          "command": "SysMon.EnableMemoUsage",
+          "when": "!sysMon.memoUsage"
+        },
+        {
+          "command": "SysMon.DisableMemoUsage",
+          "when": "sysMon.memoUsage"
+        },
+        {
+          "command": "SysMon.EnableUptime",
+          "when": "!sysMon.uptime"
+        },
+        {
+          "command": "SysMon.DisableUptime",
+          "when": "sysMon.uptime"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "package": "pnpm vsce package --no-dependencies",
+    "publish": "pnpm vsce publish --no-dependencies",
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "tsc": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --fix --ext .ts,.tsx",
+    "prettier": "prettier --write src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --fix",
+    "*.{ts,tsx,html,css,less,md}": "prettier --write"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.50.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "@vscode/test-electron": "^1.5.2",
+    "@vscode/vsce": "3.0.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "esbuild": "^0.23.1",
+    "glob": "^11.0.0",
+    "husky": "^7.0.2",
+    "mocha": "^8.4.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "systeminformation": "5.12.3"
+  },
+  "bugs": {
+    "url": "https://github.com/isontheline/vscode-sysmon/issues"
+  },
+  "homepage": "https://github.com/isontheline/vscode-sysmon#readme",
+  "author": "isontheline",
+  "license": "MIT"
+}
