@@ -4,6 +4,9 @@
   "description": "Visual Studio Code extension to show system stats",
   "version": "1.0.1",
   "publisher": "isontheline",
+  "sponsor": {
+    "url": "https://github.com/sponsors/isontheline"
+  },
   "engines": {
     "vscode": "^1.92.2"
   },
