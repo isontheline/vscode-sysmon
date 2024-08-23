@@ -10,7 +10,7 @@ Visual Studio Code extension to show system stats (Initial fork from [njzydark](
 - Support show cpu load, loadavg, network speed, memory usage and uptime
 - Support custom display format, order and priority
 - Support copy ip to clipboard
-- Support change loacation and refresh interval
+- Support change position and refresh interval
 
 ## Extension Settings
 You can visit this extension page in vscode to see detail
