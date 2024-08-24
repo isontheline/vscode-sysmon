@@ -1,12 +1,10 @@
 <p align="center">
     <img alt="VSCode SysMon" title="VSCode SysMon" src="https://raw.githubusercontent.com/isontheline/vscode-sysmon/main/images/icon-no-background.png" width="256" />
     <br />
-    <a href="https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon" style="text-decoration:none">
-        <img src="https://img.shields.io/visual-studio-marketplace/v/isontheline.vscode-sysmon" />
-        <img src="https://img.shields.io/visual-studio-marketplace/i/isontheline.vscode-sysmon" />
-        <img src="https://img.shields.io/visual-studio-marketplace/r/isontheline.vscode-sysmon" />
-        <img src="https://img.shields.io/visual-studio-marketplace/last-updated/isontheline.vscode-sysmon" />
-    </a>
+    <img src="https://img.shields.io/visual-studio-marketplace/v/isontheline.vscode-sysmon" />
+    <img src="https://img.shields.io/visual-studio-marketplace/i/isontheline.vscode-sysmon" />
+    <img src="https://img.shields.io/visual-studio-marketplace/r/isontheline.vscode-sysmon" />
+    <img src="https://img.shields.io/visual-studio-marketplace/last-updated/isontheline.vscode-sysmon" />
 </p>
 
 # VSCode SysMon
