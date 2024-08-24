@@ -1,14 +1,16 @@
 <p align="center">
-  <img alt="VSCode SysMon" title="VSCode SysMon" src="https://raw.githubusercontent.com/isontheline/vscode-sysmon/main/images/icon-no-background.png" width="256" />
+    <img alt="VSCode SysMon" title="VSCode SysMon" src="https://raw.githubusercontent.com/isontheline/vscode-sysmon/main/images/icon-no-background.png" width="256" />
+    <br />
+    <a href="https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon" style="text-decoration:none">
+        <img src="https://img.shields.io/visual-studio-marketplace/v/isontheline.vscode-sysmon" />
+        <img src="https://img.shields.io/visual-studio-marketplace/i/isontheline.vscode-sysmon" />
+        <img src="https://img.shields.io/visual-studio-marketplace/r/isontheline.vscode-sysmon" />
+        <img src="https://img.shields.io/visual-studio-marketplace/last-updated/isontheline.vscode-sysmon" />
+    </a>
 </p>
 
 # VSCode SysMon
-[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
-[![Visual Studio Marketplace Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
-[![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
-[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
-
-Visual Studio Code Extension to show system stats inside the status bar (Forked from the awesome work of [njzydark](https://github.com/njzydark/vscode-stats-bar))
+Visual Studio Code Extension to show system stats inside the status bar (Forked from the awesome work of @njzydark)
 
 ![VSCode SysMon](https://raw.githubusercontent.com/isontheline/vscode-sysmon/main/images/vscode-sysmon-screenshot.png)
 
