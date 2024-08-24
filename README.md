@@ -1,4 +1,6 @@
-![VSCode SysMon](https://raw.githubusercontent.com/isontheline/vscode-sysmon/main/images/icon-no-background.png)
+<p align="center">
+  <img alt="VSCode SysMon" title="VSCode SysMon" src="https://raw.githubusercontent.com/isontheline/vscode-sysmon/main/images/icon-no-background.png" width="256" />
+</p>
 
 # VSCode SysMon
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/isontheline.vscode-sysmon)](https://marketplace.visualstudio.com/items?itemName=isontheline.vscode-sysmon)
