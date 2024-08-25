@@ -256,7 +256,7 @@
     "@typescript-eslint/parser": "^4.26.0",
     "@vscode/test-electron": "^1.5.2",
     "@vscode/vsce": "3.0.0",
-    "eslint": "^7.27.0",
+    "eslint": "^9.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
     "esbuild": "^0.23.1",
