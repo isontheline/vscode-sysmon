@@ -25,7 +25,7 @@ jobs:
       # Create Release Semver
       - name: Generate Semantic Version
         id: semver
-        uses: rapidstack/PR-Label-Semver-Action@v1
+        uses: rapidstack/PR-Label-Semver-Action@v1.3.6
 
       # Set Project Version
       - name: Set Frontend Version
