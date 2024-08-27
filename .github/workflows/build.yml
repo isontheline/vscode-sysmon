@@ -25,10 +25,13 @@ jobs:
       # Create Release Semver
       - name: Generate Semantic Version
         id: semver
-        uses: rapidstack/PR-Label-Semver-Action@v1.3.6
+        uses: K-Phoen/semver-release-action@master
         with:
-          default-bump: patch
+          release_branch: main
+          release_strategy: none
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Set Project Version
       - name: Set Frontend Version
-        run: npm version ${{ steps.semver.outputs.string }}
+        run: npm version ${{ steps.semver.outputs.tag }}
