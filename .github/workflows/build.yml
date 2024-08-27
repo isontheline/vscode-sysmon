@@ -27,7 +27,7 @@ jobs:
         id: semver
         uses: rapidstack/PR-Label-Semver-Action@v1.3.6
         with:
-          default_bump: patch
+          default-bump: patch
 
       # Set Project Version
       - name: Set Frontend Version
