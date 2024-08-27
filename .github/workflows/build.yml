@@ -21,17 +21,49 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.7
 
       # Create Release Semver
-      - name: Generate Semantic Version
-        id: semver
-        uses: K-Phoen/semver-release-action@master
-        with:
-          release_branch: main
-          release_strategy: none
+      - name: Get the current branch name
+        id: get_branch
+        run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+      - name: Find related PR
+        id: find_pr
+        run: |
+          PR_URL=$(gh pr list --base ${{ env.branch }} --state=all --json url --limit=1 --jq '.[0].url')
+          echo "pr_url=$PR_URL" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fetch PR labels
+        id: get_labels
+        if: env.pr_url != ''
+        run: |
+          LABELS=$(gh pr view ${{ env.pr_url }} --json labels --jq '.labels | map(.name) | join(",")')
+          echo "labels=$LABELS" >> $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set default version incrementer
+        run: echo "versionIncrementer=incrementPatch" >> $GITHUB_ENV
+      - name: Check for enhancement / breaking-change labels
+        if: env.labels != ''
+        run: |
+          LABELS="${{ env.labels }}"
+          if [[ $LABELS == *"enhancement"* ]]; then
+            echo "versionIncrementer=incrementMinor" >> $GITHUB_ENV
+          fi
+          if [[ $LABELS == *"breaking-change"* ]]; then
+            echo "versionIncrementer=incrementMajor" >> $GITHUB_ENV
+          fi
+      - name: Display Version Incrementer
+        run: echo "Version Incrementer == ${{ env.versionIncrementer }}"
+      - name: Create Release
+        if: |
+          github.ref == 'refs/heads/main' &&
+          github.repository == 'dragon-okinawa/dragon'
+        run: gradle createRelease -Prelease.versionIncrementer=${{ env.versionIncrementer }}
 
       # Set Project Version
       - name: Set Frontend Version
-        run: npm version ${{ steps.semver.outputs.tag }}
+        run: npm version from-git --no-git-tag-version
