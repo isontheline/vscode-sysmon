@@ -86,6 +86,9 @@ jobs:
 
       # Create Release
       - name: Create release
+        if: |
+          github.ref == 'refs/heads/main' &&
+          github.repository == 'isontheline/vscode-sysmon'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
