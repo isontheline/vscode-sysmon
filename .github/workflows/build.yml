@@ -4,6 +4,8 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -65,7 +67,7 @@ jobs:
         run: gradle createRelease -Prelease.versionIncrementer=${{ env.versionIncrementer }}
 
       # Set Project Version
-      - name: Set Frontend Version
+      - name: Set Project Version
         run: npm version from-git --no-git-tag-version
 
       # Build Project
@@ -81,3 +83,14 @@ jobs:
           github.ref == 'refs/heads/main' &&
           github.repository == 'isontheline/vscode-sysmon'
         run: gradle pushRelease
+
+      # Create Release
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag=$(git describe --tags --abbrev=0)
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${tag#v}" \
+              --generate-notes
