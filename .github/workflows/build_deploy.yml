@@ -1,4 +1,4 @@
-name: Build VSCode SysMon
+name: Build and Deploy
 on: 
   - push
 concurrency:
@@ -77,6 +77,27 @@ jobs:
           npm run vscode:prepublish
           npm run package
 
+      # Publish to Visual Studio Marketplace
+      - name: Publish to Visual Studio Marketplace
+        if: |
+          github.ref == 'refs/heads/main' &&
+          github.repository == 'isontheline/vscode-sysmon'
+        uses: HaaLeo/publish-vscode-extension@v1
+        id: publishToMarketplace
+        with:
+          pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          registryUrl: https://marketplace.visualstudio.com
+
+      # Publish to Open VSX Registry
+      - name: Publish to Open VSX Registry
+        if: |
+          github.ref == 'refs/heads/main' &&
+          github.repository == 'isontheline/vscode-sysmon'
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          extensionFile: ${{ steps.publishToMarketplace.outputs.vsixPath }}
+          pat: ${{ secrets.OPEN_VSX_TOKEN }}
+
       # Push Tag
       - name: Push Tag
         if: |
@@ -95,5 +116,5 @@ jobs:
           tag=$(git describe --tags --abbrev=0)
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
-              --title="${tag#v}" \
+              --title="v${tag#v}" \
               --generate-notes
