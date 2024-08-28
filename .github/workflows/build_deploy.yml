@@ -77,27 +77,6 @@ jobs:
           npm run vscode:prepublish
           npm run package
 
-      # Push Tag
-      - name: Push Tag
-        if: |
-          github.ref == 'refs/heads/main' &&
-          github.repository == 'isontheline/vscode-sysmon'
-        run: gradle pushRelease
-
-      # Create Release
-      - name: Create release
-        if: |
-          github.ref == 'refs/heads/main' &&
-          github.repository == 'isontheline/vscode-sysmon'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          tag=$(git describe --tags --abbrev=0)
-          gh release create "$tag" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="v${tag#v}" \
-              --generate-notes
-      
       # Publish to Visual Studio Marketplace
       - name: Publish to Visual Studio Marketplace
         if: |
@@ -118,3 +97,25 @@ jobs:
         with:
           extensionFile: ${{ steps.publishToMarketplace.outputs.vsixPath }}
           pat: ${{ secrets.OPEN_VSX_TOKEN }}
+
+      # Push Tag
+      - name: Push Tag
+        if: |
+          github.ref == 'refs/heads/main' &&
+          github.repository == 'isontheline/vscode-sysmon'
+        run: gradle pushRelease
+
+      # Create Release
+      - name: Create release
+        if: |
+          github.ref == 'refs/heads/main' &&
+          github.repository == 'isontheline/vscode-sysmon'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag=$(git describe --tags --abbrev=0)
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="v${tag#v}" \
+              --generate-notes
+              
