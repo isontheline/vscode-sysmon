@@ -11,6 +11,7 @@ jobs:
   check_labels:
     name: Check Labels
     runs-on: ubuntu-latest
+    timeout-minutes: 5m
     steps:
       - name: Check Semver Labels
         uses: docker://agilepathway/pull-request-label-checker:latest
