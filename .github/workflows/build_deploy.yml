@@ -79,6 +79,9 @@ jobs:
 
       # Publish to Visual Studio Marketplace
       - name: Publish to Visual Studio Marketplace
+        if: |
+          github.ref == 'refs/heads/main' &&
+          github.repository == 'isontheline/vscode-sysmon'
         uses: HaaLeo/publish-vscode-extension@v1
         id: publishToMarketplace
         with:
@@ -87,6 +90,9 @@ jobs:
 
       # Publish to Open VSX Registry
       - name: Publish to Open VSX Registry
+        if: |
+          github.ref == 'refs/heads/main' &&
+          github.repository == 'isontheline/vscode-sysmon'
         uses: HaaLeo/publish-vscode-extension@v1
         with:
           extensionFile: ${{ steps.publishToMarketplace.outputs.vsixPath }}
