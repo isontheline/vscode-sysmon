@@ -25,7 +25,7 @@ jobs:
         with:
           gradle-version: 8.7
 
-      # Create Release Semver
+      # Create Tag Semver
       - name: Get the current branch name
         id: get_branch
         run: echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
@@ -58,7 +58,7 @@ jobs:
           fi
       - name: Display Version Incrementer
         run: echo "Version Incrementer == ${{ env.versionIncrementer }}"
-      - name: Create Release
+      - name: Create Tag
         if: |
           github.ref == 'refs/heads/main' &&
           github.repository == 'isontheline/vscode-sysmon'
@@ -75,8 +75,8 @@ jobs:
           npm run vscode:prepublish
           npm run package
 
-      # Push Release
-      - name: Push Release
+      # Push Tag
+      - name: Push Tag
         if: |
           github.ref == 'refs/heads/main' &&
           github.repository == 'isontheline/vscode-sysmon'
