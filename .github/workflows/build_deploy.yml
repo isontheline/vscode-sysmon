@@ -118,3 +118,4 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="v${tag#v}" \
               --generate-notes
+              
