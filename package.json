@@ -102,7 +102,7 @@
           "sysMon.networkSpeed.format": {
             "type": "string",
             "scope": "machine-overridable",
-            "default": "$(arrow-up) ${up} ${up-unit} $(arrow-down) ${down} ${down-unit}",
+            "default": "$(cloud-upload) ${up} ${up-unit} $(cloud-download) ${down} ${down-unit}",
             "markdownDescription": "You can use these variables to custom display format: `${up}` `${up-unit}` `${down}` `${down-unit}` or visit [doc](https://github.com/isontheline/vscode-sysmon#display-format) to see detail (e.g. how use icon)"
           },
           "sysMon.memoUsage.format": {
