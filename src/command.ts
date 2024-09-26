@@ -26,7 +26,7 @@ class Command {
             env.clipboard.writeText(ip);
             window.showInformationMessage(`The IP ${ip} was copied successfully`);
           } else {
-            window.showInformationMessage(`Not found IP`);
+            window.showInformationMessage(`IP Not Found`);
           }
         } catch (err) {
           if (err instanceof Error) {

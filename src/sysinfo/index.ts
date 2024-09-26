@@ -39,8 +39,15 @@ export async function getLoadavg() {
 export async function getIP() {
   const defaultInterface = await si.networkInterfaceDefault();
   const res = await si.networkInterfaces();
-  const cur = res.find(item => item.iface === defaultInterface);
-  return cur?.ip4;
+  if (!Array.isArray(res)) {
+    return res.ip4;
+  }
+  for (const item of res) {
+    if (item.iface === defaultInterface) {
+      return item.ip4;
+    }
+  }
+  return null;
 }
 
 export async function getNetworkSpeed() {
