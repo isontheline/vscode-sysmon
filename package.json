@@ -253,7 +253,7 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "systeminformation": "5.23.5"
+    "systeminformation": "5.23.8"
   },
   "bugs": {
     "url": "https://github.com/isontheline/vscode-sysmon/issues"
