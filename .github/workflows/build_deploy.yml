@@ -82,7 +82,7 @@ jobs:
         if: |
           github.ref == 'refs/heads/main' &&
           github.repository == 'isontheline/vscode-sysmon'
-        uses: HaaLeo/publish-vscode-extension@v1
+        uses: HaaLeo/publish-vscode-extension@v2
         id: publishToMarketplace
         with:
           pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
@@ -93,7 +93,7 @@ jobs:
         if: |
           github.ref == 'refs/heads/main' &&
           github.repository == 'isontheline/vscode-sysmon'
-        uses: HaaLeo/publish-vscode-extension@v1
+        uses: HaaLeo/publish-vscode-extension@v2
         with:
           extensionFile: ${{ steps.publishToMarketplace.outputs.vsixPath }}
           pat: ${{ secrets.OPEN_VSX_TOKEN }}
